@@ -8,6 +8,10 @@ import { useCartStore } from '../../store/cartStore'
 import ProductCard from '../../components/customer/ProductCard'
 import { useProducts } from '../../hooks'
 
+type ProductImage = {
+  url: string
+}
+
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>()
   const [selectedImg, setSelectedImg] = useState(0)
@@ -43,7 +47,7 @@ export default function ProductDetailPage() {
           </div>
           {product.images?.length > 1 && (
             <div className="flex gap-2">
-              {product.images.map((img, i) => (
+              {product.images.map((img: ProductImage, i: number) => (
                 <button key={i} onClick={() => setSelectedImg(i)}
                   className={`w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${i === selectedImg ? 'border-primary-500' : 'border-gray-200'}`}>
                   <img src={img.url} alt="" className="w-full h-full object-cover" />
