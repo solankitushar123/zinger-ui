@@ -2,8 +2,8 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://zinger-bd.onrender.com/api',
-  withCredentials: false,   // not needed for JWT Bearer token auth
+  baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,   // not needed for JWT Bearer token auth
   timeout: 20000,
   headers: {
     'Content-Type': 'application/json',
